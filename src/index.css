@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@theme {
+    --color-oyster: #F9F4EA;
+    --color-newblue: #405CB8;
+    --color-lightyellow: #FDEEBB;
+    --color-cyanblue: #8CB6E3;
+    --color-babyblue: #D4E8F8;
+    --color-darkcyan: #39425C;
+}
+
+.menu li > *:not(ul):not(.menu-title):not(details):active{
+    @apply bg-babyblue text-lightyellow;
+}
+
+.no-focus-ring {
+    @apply focus-within:outline-none focus-within:ring-0;
+}
+
+
+
+.li-hover {
+    @apply hover:bg-cyanblue/50 hover:text-oyster transition-all duration-200;
+}
+
+.li-dark {
+    @apply dark:text-lightyellow dark:hover:text-babyblue;
+}
