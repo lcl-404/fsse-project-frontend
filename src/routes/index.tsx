@@ -1,16 +1,8 @@
 import {createFileRoute} from "@tanstack/react-router";
-import NavList from "../ui/components/common/NavList";
-import Landing from "../ui/components/page/landing";
+
+import Home from "../ui/page/Home";
 
 export const Route = createFileRoute('/')({
-  component: Index,
+  component: Home,
 })
 
-function Index() {
-  return (
-    <>
-    <NavList/>
-   <Landing/>
-  </>
-)
-}

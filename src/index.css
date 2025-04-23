@@ -19,12 +19,14 @@
     @apply focus-within:outline-none focus-within:ring-0;
 }
 
-
-
 .li-hover {
     @apply hover:bg-cyanblue/50 hover:text-oyster transition-all duration-200;
 }
 
 .li-dark {
     @apply dark:text-lightyellow dark:hover:text-babyblue;
+}
+
+.btn {
+    @apply rounded-3xl
 }
