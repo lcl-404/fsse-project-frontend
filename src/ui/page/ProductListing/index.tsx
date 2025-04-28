@@ -1,22 +1,25 @@
-// ProductListing.tsx
-import { useState } from "react";
-import NavList from "../../components/common/NavList";
-import CardContainer from "./component/CardContainer.tsx";
+import {useMatches, useNavigate} from "@tanstack/react-router";
 import FilterIcons from "./component/FilterIcons.tsx";
+import CardContainer from "./component/CardContainer.tsx";
+import NavList from "../../components/common/NavList";
 
 export default function ProductListing() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const matches = useMatches();
+  const categoryMatch = matches.find(match => match.routeId === '/products/cat/$category');
+  const category = categoryMatch?.params?.category ?? null;
+  const navigate = useNavigate({from:"/"})
 
-  // Handler function to update selectedCategory
-  const handleCategoryChange = (category: string | null) => {
-    setSelectedCategory(category);
+
+  const handleCategoryChange = (selectedCategory: string | null) => {
+    const path = selectedCategory ? `/products/cat/${selectedCategory}` : "/products";
+    navigate({ to: path });
   };
 
   return (
-    <div className="bg-oyster dark:bg-darkcyan min-h-screen">
-      <NavList />
-      <FilterIcons selectedCategory={selectedCategory} handleCategoryChange={handleCategoryChange} />
-      <CardContainer selectedCategory={selectedCategory} />
+    <div className="min-h-screen bg-oyster dark:bg-darkcyan">
+      <NavList/>
+      <FilterIcons selectedCategory={category} handleCategoryChange={handleCategoryChange} />
+      <CardContainer selectedCategory={category} />
     </div>
   );
 }

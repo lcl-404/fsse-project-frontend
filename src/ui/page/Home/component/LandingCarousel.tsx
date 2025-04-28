@@ -6,27 +6,27 @@ import {useEffect, useRef, useState} from "react";
 const carouselData = [
   {
     imageUrl: "/assets/img/table-grey.png",
-    title: "Spring Collection",
+    title: "Spring Table",
     description:
       "A beautiful collection of tableware and glassware, make your summer parties and gatherings picture-perfect.",
-    buttonText: "Shop Now",
-    buttonLink: "#",
+    buttonText: "Explore",
+    buttonLink: "/products/cat/tableware",
   },
   {
     imageUrl: "/assets/img/picnic2.jpg",
     title: "Picnic Aesthetic",
     description:
       "Light and breezy designs perfect for aesthetic brunches and outdoor picnics.",
-    buttonText: "Shop Now",
-    buttonLink: "#",
+    buttonText: "Explore All",
+    buttonLink: "/products/cat/picnic",
   },
   {
     imageUrl: "/assets/img/baking.jpg",
     title: "Baking Essentials",
     description:
       "From mixers to pans and trays. All you need to make your perfect bake.",
-    buttonText: "Shop Now",
-    buttonLink: "#",
+    buttonText: "Explore All",
+    buttonLink: "/products/cat/bakeware",
   },
 ];
 

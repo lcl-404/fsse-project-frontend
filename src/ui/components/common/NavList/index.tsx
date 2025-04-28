@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import CartDropDown from "./CartDropDown.tsx";
 import Logo from "../Logo/Logo.tsx";
+import {Link} from "@tanstack/react-router";
+import NavUserDropdown from "./NavUserDropdown.tsx";
+
 
 export default function NavList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +18,7 @@ export default function NavList() {
 
   return (
     <div className="navbar bg-oyster h-20 px-6 dark:bg-darkcyan">
-      <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between px-6">
         {/* Logo */}
         <a
           href="/"
@@ -98,22 +101,7 @@ export default function NavList() {
 
         <div className="w-40 flex items-center justify-between">
           {/* Login icon */}
-          <button className="btn btn-ghost btn-square text-newblue dark:text-lightyellow">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5.121 17.804A13.937 13.937 0 0112 15c2.42 0 4.675.71 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-          </button>
-
+          <NavUserDropdown/>
           <CartDropDown />
 
           {/* Side Panel Menu */}
@@ -148,14 +136,18 @@ export default function NavList() {
               <nav className="mt-6 text-newblue dark:text-lightyellow text-xl">
                 <ul className="space-y-2">
                   <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
-                    <a href="#" className="block">
+                    <Link to={"/"}>
+                    <span className="block">
                       Home
-                    </a>
+                    </span>
+                    </Link>
                   </li>
                   <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
-                    <a href="#" className="block">
+                    <Link to={"/products"}>
+                    <span className="block">
                       Products
-                    </a>
+                    </span>
+                    </Link>
                   </li>
                   <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
                     <a href="#" className="block">
@@ -163,12 +155,13 @@ export default function NavList() {
                     </a>
                   </li>
                   <li className="pl-6">
-                    <a
-                      href="#"
+                    <Link to="/login">
+                    <span
                       className="btn text-newblue hover:bg-babyblue dark:text-lightyellow dark:bg-darkcyan dark:hover:bg-newblue mt-5"
                     >
-                      Login or Register
-                    </a>
+                      Login
+                    </span>
+                    </Link>
                   </li>
                 </ul>
               </nav>

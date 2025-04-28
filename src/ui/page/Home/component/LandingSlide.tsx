@@ -1,5 +1,7 @@
 // components/LandingSlide.tsx
 
+import {Link} from "@tanstack/react-router";
+
 type LandingSlideProps = {
   imageUrl: string;
   title: string;
@@ -27,9 +29,11 @@ export default function LandingSlide(props: LandingSlideProps) {
           <h2 className="card-title text-xl">{title}</h2>
           <p>{description}</p>
           <div className="card-actions justify-start">
-            <a href={buttonLink} className="btn text-newblue bg-oyster mt-5">
+            <Link to={buttonLink}>
+            <button className="btn text-newblue bg-oyster mt-5 dark:bg-darkcyan dark:text-oyster">
               {buttonText}
-            </a>
+            </button>
+            </Link>
           </div>
         </div>
       </div>

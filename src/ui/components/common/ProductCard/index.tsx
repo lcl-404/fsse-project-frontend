@@ -22,14 +22,11 @@ export default function ProductCard({ getAllProductDto }: Props) {
         </h2>
         <p className="text-lg my-2">${getAllProductDto.price.toLocaleString()}</p>
         <div className="card-actions justify-end mt-auto"> {/* Pushes button to bottom */}
+          <Link to="/products/$pid" params={{pid: getAllProductDto.pid.toString()}}>
           <button className="btn bg-lightyellow text-newblue dark:bg-cyanblue w-full"> {/* Full width button */}
-            <Link
-              to="/products/$productId"
-              params={{ productId: getAllProductDto.pid.toString() }}
-            >
               Shop
-            </Link>
           </button>
+        </Link>
         </div>
       </div>
     </div>

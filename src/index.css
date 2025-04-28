@@ -30,3 +30,21 @@
 .btn {
     @apply rounded-3xl
 }
+
+@layer base {
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number'] {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield !important;
+    }
+}
+
+.alert-warning {
+    @apply bg-lightyellow border-amber-100
+}
+
+.selector-btn {
+    @apply px-3 py-1 bg-oyster hover:bg-babyblue hover:cursor-pointer dark:bg-darkcyan dark:hover:bg-newblue
+}

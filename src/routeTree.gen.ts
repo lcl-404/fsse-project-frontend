@@ -13,7 +13,10 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProductsIndexImport } from './routes/products/index'
-import { Route as ProductsProductIdImport } from './routes/products/$productId'
+import { Route as LoginIndexImport } from './routes/login/index'
+import { Route as ErrorIndexImport } from './routes/error/index'
+import { Route as ProductsPidImport } from './routes/products/$pid'
+import { Route as ProductsCatCategoryImport } from './routes/products/cat.$category'
 
 // Create/Update Routes
 
@@ -29,9 +32,27 @@ const ProductsIndexRoute = ProductsIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProductsProductIdRoute = ProductsProductIdImport.update({
-  id: '/products/$productId',
-  path: '/products/$productId',
+const LoginIndexRoute = LoginIndexImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ErrorIndexRoute = ErrorIndexImport.update({
+  id: '/error/',
+  path: '/error/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProductsPidRoute = ProductsPidImport.update({
+  id: '/products/$pid',
+  path: '/products/$pid',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProductsCatCategoryRoute = ProductsCatCategoryImport.update({
+  id: '/products/cat/$category',
+  path: '/products/cat/$category',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,11 +67,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/products/$productId': {
-      id: '/products/$productId'
-      path: '/products/$productId'
-      fullPath: '/products/$productId'
-      preLoaderRoute: typeof ProductsProductIdImport
+    '/products/$pid': {
+      id: '/products/$pid'
+      path: '/products/$pid'
+      fullPath: '/products/$pid'
+      preLoaderRoute: typeof ProductsPidImport
+      parentRoute: typeof rootRoute
+    }
+    '/error/': {
+      id: '/error/'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof ErrorIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginIndexImport
       parentRoute: typeof rootRoute
     }
     '/products/': {
@@ -60,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/products/cat/$category': {
+      id: '/products/cat/$category'
+      path: '/products/cat/$category'
+      fullPath: '/products/cat/$category'
+      preLoaderRoute: typeof ProductsCatCategoryImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -67,42 +109,76 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/products/$productId': typeof ProductsProductIdRoute
+  '/products/$pid': typeof ProductsPidRoute
+  '/error': typeof ErrorIndexRoute
+  '/login': typeof LoginIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/products/$productId': typeof ProductsProductIdRoute
+  '/products/$pid': typeof ProductsPidRoute
+  '/error': typeof ErrorIndexRoute
+  '/login': typeof LoginIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/products/$productId': typeof ProductsProductIdRoute
+  '/products/$pid': typeof ProductsPidRoute
+  '/error/': typeof ErrorIndexRoute
+  '/login/': typeof LoginIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/products/$productId' | '/products'
+  fullPaths:
+    | '/'
+    | '/products/$pid'
+    | '/error'
+    | '/login'
+    | '/products'
+    | '/products/cat/$category'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/products/$productId' | '/products'
-  id: '__root__' | '/' | '/products/$productId' | '/products/'
+  to:
+    | '/'
+    | '/products/$pid'
+    | '/error'
+    | '/login'
+    | '/products'
+    | '/products/cat/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/products/$pid'
+    | '/error/'
+    | '/login/'
+    | '/products/'
+    | '/products/cat/$category'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProductsProductIdRoute: typeof ProductsProductIdRoute
+  ProductsPidRoute: typeof ProductsPidRoute
+  ErrorIndexRoute: typeof ErrorIndexRoute
+  LoginIndexRoute: typeof LoginIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
+  ProductsCatCategoryRoute: typeof ProductsCatCategoryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProductsProductIdRoute: ProductsProductIdRoute,
+  ProductsPidRoute: ProductsPidRoute,
+  ErrorIndexRoute: ErrorIndexRoute,
+  LoginIndexRoute: LoginIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
+  ProductsCatCategoryRoute: ProductsCatCategoryRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,18 +192,30 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/products/$productId",
-        "/products/"
+        "/products/$pid",
+        "/error/",
+        "/login/",
+        "/products/",
+        "/products/cat/$category"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/products/$productId": {
-      "filePath": "products/$productId.tsx"
+    "/products/$pid": {
+      "filePath": "products/$pid.tsx"
+    },
+    "/error/": {
+      "filePath": "error/index.tsx"
+    },
+    "/login/": {
+      "filePath": "login/index.tsx"
     },
     "/products/": {
       "filePath": "products/index.tsx"
+    },
+    "/products/cat/$category": {
+      "filePath": "products/cat.$category.tsx"
     }
   }
 }

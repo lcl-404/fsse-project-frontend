@@ -16,7 +16,7 @@ export default function FilterIcons({ selectedCategory, handleCategoryChange }: 
   return (
     <div className="top-0 z-10 bg-babyblue dark:bg-base-100 py-4">
       <div className="container mx-auto px-4">
-        <div className="flex overflow-x-auto space-x-2 hide-scrollbar justify-center">
+        <div className="flex overflow-x-auto space-x-2 hide-scrollbar justify-center flex-wrap gap-1">
           {/* All Products Button */}
           <button
             onClick={() => handleCategoryChange(null)}

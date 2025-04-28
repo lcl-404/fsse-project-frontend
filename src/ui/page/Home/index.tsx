@@ -2,9 +2,9 @@
 import NavList from "../../components/common/NavList";
 import LandingCarousel from "./component/LandingCarousel.tsx";
 import AnnouncementStrip from "../../components/common/AnnouncementStrip";
-import {ProductCarousel} from "./component/ProductCarousel.tsx";
+import {ProductShowcase} from "./component/ProductShowcase.tsx";
 import NewsLetter from "./component/NewsLetter.tsx";
-import VisitUs from "./component/visitUs.tsx";
+import VisitUs from "./component/VisitUs.tsx";
 
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <NavList/>
       <LandingCarousel/>
       <AnnouncementStrip/>
-      <ProductCarousel/>
+      <ProductShowcase/>
       <NewsLetter/>
       <VisitUs/>
     </div>

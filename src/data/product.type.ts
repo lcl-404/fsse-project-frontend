@@ -6,3 +6,13 @@ export interface GetAllProductDto {
   hasStock: boolean;
   category: string;
 }
+
+export interface ProductDetailsDto {
+  pid:         number;
+  name:        string;
+  description: string;
+  imageUrl:    string;
+  price:       number;
+  stock:       number;
+  category:    string;
+}

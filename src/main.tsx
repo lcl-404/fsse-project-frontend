@@ -1,7 +1,8 @@
-import { StrictMode } from 'react'
+//import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import './index.css'
+import * as FirebaseAuthService from "./authService/FirebaseAuthService.ts"
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
@@ -16,13 +17,15 @@ declare module '@tanstack/react-router' {
   }
 }
 
+FirebaseAuthService.serviceInit();
+
 // Render the app
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
-    <StrictMode>
+    //<StrictMode>
       <RouterProvider router={router} />
-    </StrictMode>,
+   // </StrictMode>,
   )
 }
