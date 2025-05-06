@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as ShoppingCartIndexImport } from './routes/shoppingCart/index'
 import { Route as ProductsIndexImport } from './routes/products/index'
 import { Route as LoginIndexImport } from './routes/login/index'
 import { Route as ErrorIndexImport } from './routes/error/index'
@@ -23,6 +24,12 @@ import { Route as ProductsCatCategoryImport } from './routes/products/cat.$categ
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ShoppingCartIndexRoute = ShoppingCartIndexImport.update({
+  id: '/shoppingCart/',
+  path: '/shoppingCart/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/shoppingCart/': {
+      id: '/shoppingCart/'
+      path: '/shoppingCart'
+      fullPath: '/shoppingCart'
+      preLoaderRoute: typeof ShoppingCartIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/products/cat/$category': {
       id: '/products/cat/$category'
       path: '/products/cat/$category'
@@ -113,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/shoppingCart': typeof ShoppingCartIndexRoute
   '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
@@ -122,6 +137,7 @@ export interface FileRoutesByTo {
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/shoppingCart': typeof ShoppingCartIndexRoute
   '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
@@ -132,6 +148,7 @@ export interface FileRoutesById {
   '/error/': typeof ErrorIndexRoute
   '/login/': typeof LoginIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/shoppingCart/': typeof ShoppingCartIndexRoute
   '/products/cat/$category': typeof ProductsCatCategoryRoute
 }
 
@@ -143,6 +160,7 @@ export interface FileRouteTypes {
     | '/error'
     | '/login'
     | '/products'
+    | '/shoppingCart'
     | '/products/cat/$category'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -151,6 +169,7 @@ export interface FileRouteTypes {
     | '/error'
     | '/login'
     | '/products'
+    | '/shoppingCart'
     | '/products/cat/$category'
   id:
     | '__root__'
@@ -159,6 +178,7 @@ export interface FileRouteTypes {
     | '/error/'
     | '/login/'
     | '/products/'
+    | '/shoppingCart/'
     | '/products/cat/$category'
   fileRoutesById: FileRoutesById
 }
@@ -169,6 +189,7 @@ export interface RootRouteChildren {
   ErrorIndexRoute: typeof ErrorIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
+  ShoppingCartIndexRoute: typeof ShoppingCartIndexRoute
   ProductsCatCategoryRoute: typeof ProductsCatCategoryRoute
 }
 
@@ -178,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   ErrorIndexRoute: ErrorIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
+  ShoppingCartIndexRoute: ShoppingCartIndexRoute,
   ProductsCatCategoryRoute: ProductsCatCategoryRoute,
 }
 
@@ -196,6 +218,7 @@ export const routeTree = rootRoute
         "/error/",
         "/login/",
         "/products/",
+        "/shoppingCart/",
         "/products/cat/$category"
       ]
     },
@@ -213,6 +236,9 @@ export const routeTree = rootRoute
     },
     "/products/": {
       "filePath": "products/index.tsx"
+    },
+    "/shoppingCart/": {
+      "filePath": "shoppingCart/index.tsx"
     },
     "/products/cat/$category": {
       "filePath": "products/cat.$category.tsx"

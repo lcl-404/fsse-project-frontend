@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CartDropDown from "./CartDropDown.tsx";
 import Logo from "../Logo/Logo.tsx";
-import {Link} from "@tanstack/react-router";
 import NavUserDropdown from "./NavUserDropdown.tsx";
 
 
 export default function NavList() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleSideMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // const toggleSideMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
 
   useEffect(() => {
-    console.log("hihi");
+    console.log("working");
   }, []);
 
   return (
-    <div className="navbar bg-oyster h-20 px-6 dark:bg-darkcyan">
-      <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between px-6">
+    <div className="navbar bg-oyster h-20 dark:bg-darkcyan">
+      <div className="max-w-screen-xl mx-auto w-full flex items-center justify-between">
         {/* Logo */}
         <a
           href="/"
@@ -99,74 +98,65 @@ export default function NavList() {
           </label>
         </div>
 
-        <div className="w-40 flex items-center justify-between">
+        <div className="w-30 flex items-center justify-between">
           {/* Login icon */}
-          <NavUserDropdown/>
           <CartDropDown />
+          <NavUserDropdown/>
 
-          {/* Side Panel Menu */}
-          <button
-            onClick={toggleSideMenu}
-            className="btn btn-ghost btn-square text-newblue dark:text-lightyellow"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+          {/*/!* Side Panel Menu *!/*/}
+          {/*<button*/}
+          {/*  onClick={toggleSideMenu}*/}
+          {/*  className="btn btn-ghost btn-square text-newblue dark:text-lightyellow"*/}
+          {/*>*/}
+          {/*  <svg*/}
+          {/*    xmlns="http://www.w3.org/2000/svg"*/}
+          {/*    className="h-6 w-6"*/}
+          {/*    fill="none"*/}
+          {/*    viewBox="0 0 24 24"*/}
+          {/*    stroke="currentColor"*/}
+          {/*  >*/}
+          {/*    <path*/}
+          {/*      strokeLinecap="round"*/}
+          {/*      strokeLinejoin="round"*/}
+          {/*      strokeWidth={2}*/}
+          {/*      d="M4 6h16M4 12h16M4 18h16"*/}
+          {/*    />*/}
+          {/*  </svg>*/}
+          {/*</button>*/}
 
-          {isMenuOpen && (
-            <div className="fixed top-0 right-0 h-screen w-80 bg-base-100 dark:bg-base-100 shadow-lg z-50 flex flex-col p-6 transition-transform duration-300 ease-in-out">
-              <button
-                onClick={toggleSideMenu}
-                className="self-end btn btn-sm btn-ghost"
-              >
-                ✕
-              </button>
-              <nav className="mt-6 text-newblue dark:text-lightyellow text-xl">
-                <ul className="space-y-2">
-                  <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
-                    <Link to={"/"}>
-                    <span className="block">
-                      Home
-                    </span>
-                    </Link>
-                  </li>
-                  <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
-                    <Link to={"/products"}>
-                    <span className="block">
-                      Products
-                    </span>
-                    </Link>
-                  </li>
-                  <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">
-                    <a href="#" className="block">
-                      About Us
-                    </a>
-                  </li>
-                  <li className="pl-6">
-                    <Link to="/login">
-                    <span
-                      className="btn text-newblue hover:bg-babyblue dark:text-lightyellow dark:bg-darkcyan dark:hover:bg-newblue mt-5"
-                    >
-                      Login
-                    </span>
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          )}
+          {/*{isMenuOpen && (*/}
+          {/*  <div className="fixed top-0 right-0 h-screen w-80 bg-base-100 dark:bg-base-100 shadow-lg z-50 flex flex-col p-6 transition-transform duration-300 ease-in-out">*/}
+          {/*    <button*/}
+          {/*      onClick={toggleSideMenu}*/}
+          {/*      className="self-end btn btn-sm btn-ghost"*/}
+          {/*    >*/}
+          {/*      ✕*/}
+          {/*    </button>*/}
+          {/*    <nav className="mt-6 text-newblue dark:text-lightyellow text-xl">*/}
+          {/*      <ul className="space-y-2">*/}
+          {/*        <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">*/}
+          {/*          <Link to={"/"}>*/}
+          {/*          <span className="block">*/}
+          {/*            Home*/}
+          {/*          </span>*/}
+          {/*          </Link>*/}
+          {/*        </li>*/}
+          {/*        <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">*/}
+          {/*          <Link to={"/products"}>*/}
+          {/*          <span className="block">*/}
+          {/*            Products*/}
+          {/*          </span>*/}
+          {/*          </Link>*/}
+          {/*        </li>*/}
+          {/*        <li className="hover:bg-babyblue dark:hover:bg-newblue rounded-md pl-6 py-2 transition">*/}
+          {/*          <a href="#" className="block">*/}
+          {/*            About Us*/}
+          {/*          </a>*/}
+          {/*        </li>*/}
+          {/*      </ul>*/}
+          {/*    </nav>*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </div>
       </div>
     </div>

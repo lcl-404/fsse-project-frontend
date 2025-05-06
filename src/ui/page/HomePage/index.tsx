@@ -5,6 +5,7 @@ import AnnouncementStrip from "../../components/common/AnnouncementStrip";
 import {ProductShowcase} from "./component/ProductShowcase.tsx";
 import NewsLetter from "./component/NewsLetter.tsx";
 import VisitUs from "./component/VisitUs.tsx";
+import Footer from "../../components/common/Footer";
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <ProductShowcase/>
       <NewsLetter/>
       <VisitUs/>
+      <Footer/>
     </div>
   )
 }

@@ -36,7 +36,24 @@ export default function LoginContainer() {
     if (loginUser){
       navigate({to:"/"})
     }
-  }, []);
+  }, [loginUser]);
+
+  const renderLoginBtn = () => {
+    if (isSigningIn) {
+      return (
+        <button type="submit" className="btn mt-4 bg-babyblue text-newblue" disabled={true}>
+          <span className="loading loading-dots loading-sm"></span>
+          Logging in
+        </button>
+
+
+      )
+    }
+    return(
+      <button type="submit" className="btn mt-4 bg-babyblue text-newblue">Login</button>
+    )
+
+  }
 
   return (
   <>
@@ -71,7 +88,9 @@ export default function LoginContainer() {
                 <input name="email" type="email" className="input no-focus-ring" placeholder="Email" required />
                 <label className="label">Password</label>
                 <input name="password" type="password" className="input no-focus-ring" placeholder="Password" required />
-                <button type="submit" className="btn mt-4 bg-babyblue text-newblue" disabled={isSigningIn}>Login</button>
+
+                {/*add to cart btn*/}
+                {renderLoginBtn()}
               </fieldset>
             </form>
           </div>

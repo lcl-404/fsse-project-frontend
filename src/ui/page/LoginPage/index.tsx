@@ -1,6 +1,7 @@
 import NavList from "../../components/common/NavList";
 import AnnouncementStrip from "../../components/common/AnnouncementStrip";
 import LoginContainer from "./component/LoginContainer";
+import Footer from "../../components/common/Footer";
 
 export default function Login() {
   return (
@@ -8,6 +9,7 @@ export default function Login() {
       <NavList/>
       <AnnouncementStrip/>
       <LoginContainer/>
+      <Footer/>
     </div>
   )
 }

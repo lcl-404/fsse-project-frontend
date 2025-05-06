@@ -1,19 +1,26 @@
 export default function AnnouncementStrip() {
-  const message =
-    "• Free shipping on orders over $50 • New Spring Collection out now • Follow us on Instagram @gokotta_home \u00A0\u00A0\u00A0\u00A0"; // Add some trailing spaces
-  const repeatedMessage = message.repeat(3); // Adjust the repeat count
-  const animationDuration = 15; // seconds
+  const message = "• Free shipping on orders over $50 • New Spring Collection out now • Follow us on Instagram @gokotta_home • ";
 
   return (
-    <div className="w-full overflow-hidden bg-babyblue border-newblue border py-2 dark:bg-newblue">
-      <div
-        className="relative whitespace-nowrap"
-        style={{
-          animation: `marquee ${animationDuration}s linear infinite`,
-        }}
-      >
-        <span className="text-newblue text-sm dark:text-lightyellow">{repeatedMessage}</span>
+    <div className="w-full overflow-hidden bg-babyblue border-newblue border py-2 dark:bg-newblue relative">
+      <div className="whitespace-nowrap flex items-center">
+        {/* Original Content */}
+        <div className="inline-block animate-marquee">
+          <span className="text-newblue text-sm dark:text-lightyellow pr-8">
+            {message.repeat(6)} {/* Generates enough content */}
+          </span>
+        </div>
+
+        {/* Mirror Content for seamless loop */}
+        <div className="inline-block animate-marquee">
+          <span className="text-newblue text-sm dark:text-lightyellow pr-8">
+            {message.repeat(6)}
+          </span>
+        </div>
       </div>
+
+      {/* Add to your global CSS */}
+
     </div>
   );
 }

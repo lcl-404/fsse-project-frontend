@@ -5,7 +5,7 @@
 @theme {
     --color-oyster: #F9F4EA;
     --color-newblue: #405CB8;
-    --color-lightyellow: #FDEEBB;
+    --color-lightyellow: #faf0ca;
     --color-cyanblue: #8CB6E3;
     --color-babyblue: #D4E8F8;
     --color-darkcyan: #39425C;
@@ -28,7 +28,7 @@
 }
 
 .btn {
-    @apply rounded-3xl
+    @apply rounded-3xl hover:cursor-pointer
 }
 
 @layer base {
@@ -46,5 +46,6 @@
 }
 
 .selector-btn {
-    @apply px-3 py-1 bg-oyster hover:bg-babyblue hover:cursor-pointer dark:bg-darkcyan dark:hover:bg-newblue
+    @apply px-3 py-1 bg-lightyellow hover:bg-babyblue hover:cursor-pointer dark:bg-darkcyan dark:hover:bg-newblue
 }
+

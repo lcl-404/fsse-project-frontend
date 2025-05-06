@@ -37,14 +37,14 @@ export default function NavUserDropdown() {
         </svg>
       </label>
 
-      <ul tabIndex={0} className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabIndex={0} className="dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-52">
         {loginUser ? (
           <>
-            <li className="px-4 py-2 text-newblue">Welcome, {loginUser.email}</li>
+            <li className="px-4 py-2 text-lg font-bold text-newblue">Welcome, {loginUser.email}</li>
             <li>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mb-2 btn btn-sm btn-outline text-newblue w-full hover:bg-babyblue dark:text-lightyellow dark:bg-darkcyan dark:hover:bg-newblue mt-5"
+                className="btn btn-block text-newblue hover:bg-babyblue dark:text-lightyellow dark:bg-darkcyan dark:hover:bg-newblue mt-3"
               >
                 Sign Out
               </button>

@@ -2,6 +2,7 @@ import {useMatches, useNavigate} from "@tanstack/react-router";
 import FilterIcons from "./component/FilterIcons.tsx";
 import CardContainer from "./component/CardContainer.tsx";
 import NavList from "../../components/common/NavList";
+import Footer from "../../components/common/Footer";
 
 export default function ProductListing() {
   const matches = useMatches();
@@ -16,10 +17,13 @@ export default function ProductListing() {
   };
 
   return (
-    <div className="min-h-screen bg-oyster dark:bg-darkcyan">
-      <NavList/>
-      <FilterIcons selectedCategory={category} handleCategoryChange={handleCategoryChange} />
-      <CardContainer selectedCategory={category} />
+    <div className="bg-oyster dark:bg-darkcyan min-h-screen flex flex-col">
+      <NavList />
+      <div className="flex-grow py-5"> {/* ← This pushes footer down */}
+        <FilterIcons selectedCategory={category} handleCategoryChange={handleCategoryChange} />
+        <CardContainer selectedCategory={category} />
+      </div>
+      <Footer />
     </div>
   );
 }

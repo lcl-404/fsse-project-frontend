@@ -40,16 +40,21 @@ export default function CardContainer({ selectedCategory }: CardContainerProps) 
           : getAllProductDtoList.filter((dto) => dto.category === selectedCategory);
 
       return (
-        <div className="flex flex-wrap gap-6 p-6 w-full max-w-7xl justify-center">
-          {filteredProducts.map((dto) => (
-            <div key={dto.pid} className="flex-grow-0 flex-shrink-0 basis-[250px]">
-              <Index getAllProductDto={dto} />
-            </div>
-          ))}
+        <div className="flex justify-center">
+          <div className="flex flex-wrap gap-6 p-6 w-full max-w-7xl justify-start">
+            {filteredProducts.map((dto) => (
+              <div key={dto.pid} className="flex-grow-0 flex-shrink-0 basis-[250px]">
+                <Index getAllProductDto={dto} />
+              </div>
+            ))}
+          </div>
         </div>
+
       );
     }
   };
 
-  return <div className="flex justify-center">{renderProductGrid()}</div>;
+  return <div className="flex justify-center">
+    {renderProductGrid()}
+  </div>;
 }
