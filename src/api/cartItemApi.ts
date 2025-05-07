@@ -1,12 +1,22 @@
 import axios from "axios";
 import {getAuthConfig} from "../authService/FirebaseAuthService.ts";
 import {CartItemDto} from "../data/cartItem.type.ts";
+import {EffectiveStockDto} from "../data/effectiveStock.type.ts";
+
 
 const baseUrl = "http://localhost:8080"
 
 export async function getUserCart() {
   const response = await axios.get<CartItemDto[]>(
     `${baseUrl}/cart/items`,
+    await getAuthConfig()
+  )
+  return response.data;
+}
+
+export async function getEffectiveStock(pid:number){
+  const response = await axios.get<EffectiveStockDto>(
+    `${baseUrl}/cart/items/${pid}/effectiveStock`,
     await getAuthConfig()
   )
   return response.data;

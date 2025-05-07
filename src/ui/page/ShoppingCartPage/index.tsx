@@ -28,7 +28,6 @@ export default function ShoppingCartPage (){
         }
       )
     )
-    window.dispatchEvent(new Event('cart-updated'));
   }
 
   const handleDelete = (pid:number)=>{
@@ -67,7 +66,7 @@ export default function ShoppingCartPage (){
     if (!isLoading && dtoList) {
       if (dtoList.length === 0) {
         return (
-          <div className="flex flex-col justify-center items-center"> {/* ← Key changes here */}
+          <div className="flex flex-col justify-center items-center h-[60vh]"> {/* ← Key changes here */}
             <p className="text-xl font-semibold mb-6">
               Your cart is empty!
             </p>

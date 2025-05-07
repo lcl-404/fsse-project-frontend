@@ -3,6 +3,7 @@ import QuantitySelector from "../../../components/common/QuantitySelector";
 import * as CartItemApi from "../../../../api/cartItemApi.ts"
 import {useState} from "react";
 import {useNavigate} from "@tanstack/react-router";
+import {useCartStore} from "../../../../store/useCartStore.ts";
 
 type Props = {
   dto: CartItemDto
@@ -15,6 +16,8 @@ export default function ShoppingCartTableRow({dto, handleQuantityChange, handleD
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate({from:"/shoppingCart"});
+  const { triggerCartUpdate } = useCartStore(); // 👈 Get the trigger
+
 
 
   const handleDecrement = async () => {
@@ -23,6 +26,7 @@ export default function ShoppingCartTableRow({dto, handleQuantityChange, handleD
       const newQuantity = dto.cartQuantity - 1;
       await CartItemApi.patchCartItem(dto.pid, newQuantity);
       handleQuantityChange(dto.pid, newQuantity);
+      triggerCartUpdate();
       setIsLoading(false);
     }
   };
@@ -33,6 +37,7 @@ export default function ShoppingCartTableRow({dto, handleQuantityChange, handleD
       const newQuantity = dto.cartQuantity + 1;
       await CartItemApi.patchCartItem(dto.pid, newQuantity);
       handleQuantityChange(dto.pid, newQuantity);
+      triggerCartUpdate();
       setIsLoading(false);
     }
   };
@@ -41,7 +46,7 @@ export default function ShoppingCartTableRow({dto, handleQuantityChange, handleD
     setIsLoading(true);
     await CartItemApi.deleteCartItem(dto.pid);
     handleDelete(dto.pid)
-    window.dispatchEvent(new Event('cart-updated'));
+    triggerCartUpdate();
     setIsLoading(false);
   }
 

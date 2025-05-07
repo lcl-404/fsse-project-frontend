@@ -1,41 +1,41 @@
 import { useEffect, useState } from "react";
 import { useAuthStore } from "../../../../store/useAuthStore";
+
 import { useNavigate } from "@tanstack/react-router";
 import { CartItemDto } from "../../../../data/cartItem.type.ts";
 import * as CartItemApi from "../../../../api/cartItemApi.ts";
+import {useCartStore} from "../../../../store/useCartStore.ts";
 
 export default function CartDropDown() {
   const loginUser = useAuthStore((state) => state.loginUser);
   const navigate = useNavigate();
   const [dtoList, setDtoList] = useState<CartItemDto[]>([]);
+  const { cartUpdateTrigger, resetCart } = useCartStore();
+
 
   const fetchCart = async () => {
     if (loginUser) {
-      const responseData = await CartItemApi.getUserCart();
-      setDtoList(responseData);
-    } else {
-      setDtoList([]);
+      try {
+        const responseData = await CartItemApi.getUserCart();
+        setDtoList(responseData);
+      } catch (error) {
+        console.error("Failed to fetch cart:", error);
+        setDtoList([]);
+      }
     }
   };
 
   useEffect(() => {
-    fetchCart();
-  }, [loginUser]);
+    if (!loginUser) {
+      setDtoList([]);
+      resetCart(); // Clear the update trigger
+    }
+  }, [loginUser, resetCart]);
 
   useEffect(() => {
-    // Define the event handler
-    const handleCartUpdate = () => {
-      fetchCart();
-    };
+    fetchCart();
+  }, [loginUser, cartUpdateTrigger]);
 
-    // Add event listener for 'cart-updated' event
-    window.addEventListener('cart-updated', handleCartUpdate);
-
-    // Cleanup: Remove event listener on unmount
-    return () => {
-      window.removeEventListener('cart-updated', handleCartUpdate);
-    };
-  }, []); // Empty dependency array to run only on mount/unmount
 
   const totalQuantity = dtoList.reduce((sum, item) => sum + item.cartQuantity, 0);
 
